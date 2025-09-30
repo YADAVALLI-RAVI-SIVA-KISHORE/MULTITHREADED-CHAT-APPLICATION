@@ -1,5 +1,3 @@
-package com.Multithreaded_Chat_Application;
-
 import java.io.*;
 import java.net.*;
 
@@ -37,4 +35,5 @@ class ChatServer {
             System.out.println("Client was disconnected.\n");
         }
     }
+
 }
