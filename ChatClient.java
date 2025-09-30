@@ -1,5 +1,3 @@
-package com.Multithreaded_Chat_Application;
-
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
@@ -36,4 +34,5 @@ class ChatClient {
         clientSocket.close();
         inFromUser.close();
     }
+
 }
