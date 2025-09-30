@@ -16,6 +16,8 @@ JAVA PROGRAM IN MY CODTECH INTERNSHIP THAT HANDLES MULTITHREADED CLIENT SERVER A
 ■ TASK -3
 MULTITHREADED-CHAT-APPLICATION
 
+![Image](https://github.com/user-attachments/assets/ea35475a-93b6-470f-9e1e-35d608765cdf)
+
 ■ OBJECTIVE
 
 Build a real-time chat application using Java sockets and multithreading.  
@@ -31,7 +33,13 @@ Build a real-time chat application using Java sockets and multithreading.
 
 ■ PROGRAM STRUCTURE : 
 
+1.ChatServer program
 
+<img width="1366" height="685" alt="Image" src="https://github.com/user-attachments/assets/51e7dcb2-ba5c-49cf-87e7-41274d98bf4d" />
+
+2.ChatClient program
+
+<img width="1366" height="685" alt="Image" src="https://github.com/user-attachments/assets/c500a74a-d678-4b98-be33-df059098f891" />
 
 ■ HOW TO RUN   
 
@@ -41,3 +49,14 @@ Build a real-time chat application using Java sockets and multithreading.
 
 ■ SAMPLE OUTPUTS
 
+<img width="1366" height="705" alt="Image" src="https://github.com/user-attachments/assets/80ff9709-1248-4392-b417-2ab263f69d94" />
+
+<img width="1366" height="705" alt="Image" src="https://github.com/user-attachments/assets/a8d8bf19-cd98-4883-b299-42e2ec97ccf6" />
+
+<img width="1366" height="705" alt="Image" src="https://github.com/user-attachments/assets/2ccea1ed-b12f-4583-99df-b3d2760e2605" />
+
+<img width="1366" height="705" alt="Image" src="https://github.com/user-attachments/assets/1928e1e9-3f46-4e55-ab2b-256a95b13c78" />
+
+<img width="1366" height="705" alt="Image" src="https://github.com/user-attachments/assets/c2216d06-0219-4d87-b7f2-d2918e1d6fd8" />
+
+<img width="1366" height="705" alt="Image" src="https://github.com/user-attachments/assets/4da759b6-0d09-4d82-9a05-855a796e1efe" />
