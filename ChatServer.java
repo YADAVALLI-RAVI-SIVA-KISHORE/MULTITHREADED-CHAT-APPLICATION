@@ -1,39 +1,65 @@
 import java.io.*;
 import java.net.*;
+import java.util.*;
 
-class ChatServer {
-    public static void main(String[] args) throws Exception {
-        // Create a welcoming socket at port 1804
-        ServerSocket welcomeSocket = new ServerSocket(1804);
+// Server program for chat
+public class ChatServer {
+    // To store all connected client writers
+    static Vector<PrintWriter> clientList = new Vector<>();
 
-        while (true) {
-            System.out.println("Now the server is running.\nWaiting for a client to connect.....");
+    public static void main(String[] args) {
+        try {
+            // Create server socket on port 1234
+            ServerSocket server = new ServerSocket(1234);
+            System.out.println("Server started. Waiting for clients...");
 
-            // Waiting for a client to connect
-            Socket connectionSocket = welcomeSocket.accept();
-            System.out.println("A client was connected : " + connectionSocket.getInetAddress());
+            // Keep accepting clients
+            while (true) {
+                Socket socket = server.accept(); // accept client connection
+                System.out.println("Client connected.");
 
-            // Create input stream from socket
-            BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
-
-            // Create output stream to socket
-            DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
-
-            // Read a line from the client
-            String clientSentence = inFromClient.readLine();
-            System.out.println("Message received from client : " + clientSentence);
-
-            // Process the line: convert to upper case
-            String capitalizedSentence = clientSentence.toUpperCase() + '\n';
-
-            // Send the capitalized line back to the client
-            outToClient.writeBytes(capitalizedSentence);
-            System.out.println("Message was sent to client : " + capitalizedSentence);
-
-            // Close the client-specific socket
-            connectionSocket.close();
-            System.out.println("Client was disconnected.\n");
+                // Create a handler (thread) for this client
+                ClientHandler handler = new ClientHandler(socket);
+                handler.start(); // start the thread
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
+}
 
+// Thread class to handle each client
+class ClientHandler extends Thread {
+    Socket socket;
+    BufferedReader in;
+    PrintWriter out;
+
+    ClientHandler(Socket s) {
+        socket = s;
+    }
+
+    public void run() {
+        try {
+            // Input from client
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            // Output to client
+            out = new PrintWriter(socket.getOutputStream(), true);
+
+            // Add this client to the list
+            ChatServer.clientList.add(out);
+
+            String msg;
+            // Keep reading messages from client
+            while ((msg = in.readLine()) != null) {
+                System.out.println("Message from client : " + msg);
+
+                // Send the message to all clients
+                for (PrintWriter writer : ChatServer.clientList) {
+                    writer.println(msg);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
