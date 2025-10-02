@@ -1,38 +1,50 @@
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
 
-class ChatClient {
-    public static void main(String[] args) throws Exception {
-        // Create a scanner for user input
-        Scanner inFromUser = new Scanner(System.in);
+// Client program for chat
+public class ChatClient {
+    public static void main(String[] args) {
+        try {
+            // Connect to server on localhost and port 1234
+            Socket socket = new Socket("localhost", 1234);
+            System.out.println("Connected to chat server.");
 
-        // Create client socket and connect to server
-        Socket clientSocket = new Socket("localhost", 1804);
+            // Thread to read messages from server
+            new ReadThread(socket).start();
 
-        // Create output stream attached to the socket
-        DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
+            // For sending messages
+            BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-        // Create input stream attached to the socket
-        BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            String msg;
+            // Keep reading input from keyboard and send to server
+            while ((msg = keyboard.readLine()) != null) {
+                out.println(msg);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
 
-        // Get a sentence from the user
-        System.out.print("Enter a Message : ");
-        String sentence = inFromUser.nextLine();
+// Thread class for reading messages from server
+class ReadThread extends Thread {
+    Socket socket;
 
-        // Send the sentence to the server
-        outToServer.writeBytes(sentence + '\n');
-        System.out.println("Message was sent to server : " + sentence);
-
-        // Read the capitalized sentence from the server
-        String modifiedSentence = inFromServer.readLine();
-
-        // Print the server's response
-        System.out.println("FROM SERVER : " + modifiedSentence);
-
-        // Close the client socket
-        clientSocket.close();
-        inFromUser.close();
+    ReadThread(Socket s) {
+        socket = s;
     }
 
+    public void run() {
+        try {
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String msg;
+            // Keep reading from server and print
+            while ((msg = in.readLine()) != null) {
+                System.out.println("Message : " + msg);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
