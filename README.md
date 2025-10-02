@@ -53,6 +53,8 @@ Build a real-time chat application using Java sockets and multithreading.
 
 ■ SAMPLE OUTPUT - 1
 
+This is for chat messages from one client only.
+
 <img width="1366" height="685" alt="Image" src="https://github.com/user-attachments/assets/4c431776-ea70-40db-be46-113d16d0b803" />
 
 <img width="1366" height="685" alt="Image" src="https://github.com/user-attachments/assets/60e05c6a-27b6-4bef-ba5f-3cec03bbf812" />
@@ -68,6 +70,8 @@ Build a real-time chat application using Java sockets and multithreading.
 <img width="1366" height="685" alt="Image" src="https://github.com/user-attachments/assets/1847f5f1-24bc-4d88-a981-07f39f66bb83" />
 
 ■ SAMPLE OUTPUT - 2
+
+This is for chat messages from multiple clients.
 
 <img width="1366" height="685" alt="Image" src="https://github.com/user-attachments/assets/62c9d8f1-8db3-43e1-9e9c-42ac3dbc1291" />
 
