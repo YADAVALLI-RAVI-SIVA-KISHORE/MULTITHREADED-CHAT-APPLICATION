@@ -66,3 +66,5 @@ Build a real-time chat application using Java sockets and multithreading.
 <img width="1366" height="685" alt="Image" src="https://github.com/user-attachments/assets/14531cf9-6ff8-4e15-bc51-3afb64bfc94f" />
 
 <img width="1366" height="685" alt="Image" src="https://github.com/user-attachments/assets/1847f5f1-24bc-4d88-a981-07f39f66bb83" />
+
+■ After compliting the tasks you should terminate the both consoles if not it may doesn't works properly on next time.
